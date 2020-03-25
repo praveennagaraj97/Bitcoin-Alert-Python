@@ -79,21 +79,21 @@ Get Data Module:
 
 Format Data Module:
 
-import get_price_from_url
-from datetime import datetime
-from pytz import timezone
+         import get_price_from_url
+         from datetime import datetime
+         from pytz import timezone
 
-country = input(‘Enter Country Code : ‘)
-def formatdata():
-  data = get_price_from_url.get_data(country)
+         country = input(‘Enter Country Code : ‘)
+         def formatdata():
+             data = get_price_from_url.get_data(country)
 
-  format = "Date: %Y-%m-%d || Time: %H:%M:%S"
-  # Current time in UTC
-  now_utc = datetime.now(timezone('UTC'))
-  # Convert to Asia/Kolkata time zone
-  now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
-  time = (now_asia.strftime(format))
-  return (f'Price : {data} <br>{time} <br> <br> ')
+             format = "Date: %Y-%m-%d || Time: %H:%M:%S"
+             # Current time in UTC
+             now_utc = datetime.now(timezone('UTC'))
+             # Convert to Asia/Kolkata time zone
+             now_asia = now_utc.astimezone(timezone('Asia/Kolkata'))
+             time = (now_asia.strftime(format))
+             return (f'Price : {data} <br>{time} <br> <br> ')
 
 
 
@@ -102,38 +102,38 @@ def formatdata():
 
 Send to IFTTT Module:
 
-import formatdata
-from time import sleep
-import requests
-def sendtoIFTTT(event='Bitcoin_price'):
-  datahistory = []
-  i = 1
-  sent = 1
-  while True:
-    data = formatdata.formatdata()
-    datahistory.append(data)
-    print(i)
-    i += 1
-
-    string = "".join([x+'\n' for x in datahistory])
-    sleep(2)
-    data = {'value1' : (string)}
-    #data1 = {'value1' : 'You Will Recieve update soon'}
-    ifttt_url = f'https://maker.ifttt.com/trigger/{event}/with/key/{IFTTT TOKEN} '
-    
-    try:
-      if len(datahistory) == 5 :
-        s = requests.session()
-        requests.post(ifttt_url,json=data)
-        del data
-        s.close
-        print('Starting New Session !')
-        sent += 1
-        sendtoIFTTT()
+        import formatdata
+        from time import sleep
+        import requests
+        def sendtoIFTTT(event='Bitcoin_price'):
         datahistory = []
-    except Exception:
-      print('something went wrong !!')
-      sendtoIFTTT()
+        i = 1
+        sent = 1
+        while True:
+           data = formatdata.formatdata()
+           datahistory.append(data)
+           print(i)
+           i += 1
+
+           string = "".join([x+'\n' for x in datahistory])
+           sleep(2)
+           data = {'value1' : (string)}
+           #data1 = {'value1' : 'You Will Recieve update soon'}
+           ifttt_url = f'https://maker.ifttt.com/trigger/{event}/with/key/{IFTTT TOKEN} '
+    
+           try:
+              if len(datahistory) == 5 :
+              s = requests.session()
+              requests.post(ifttt_url,json=data)
+              del data
+              s.close
+              print('Starting New Session !')
+              sent += 1
+              sendtoIFTTT()
+              datahistory = []
+           except Exception:
+              print('something went wrong !!')
+              sendtoIFTTT()
 
 
 
@@ -142,11 +142,11 @@ def sendtoIFTTT(event='Bitcoin_price'):
 
 Main Module:
 
-import send
-try:
-  send.sendtoIFTTT()
-except(Exception):
-  print(‘Country Code is Invalid’)
+      import send
+      try:
+         send.sendtoIFTTT()
+      except(Exception):
+         print(‘Country Code is Invalid’)
 
 # AttainU
 # Source Code by Praveen Nagaraj
