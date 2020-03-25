@@ -6,9 +6,18 @@ optional = false
 python-versions = "*"
 version = "2019.3"
 
+[[package]]
+category = "main"
+description = "Fast, Extensible Progress Meter"
+name = "tqdm"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "4.43.0"
+
 [metadata]
-content-hash = "587181593fbf500e12428cf2fe789ff4db4af96dbd100d93578fb736fa39a3db"
+content-hash = "2951ab17b51d8db6efd170cfa44b0a3c91936bc69cd416a25cca4fb85773f3f0"
 python-versions = "^3.7"
 
 [metadata.hashes]
 pytz = ["1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d", "b02c06db6cf09c12dd25137e563b31700d3b80fcc4ad23abb7a315f2789819be"]
+tqdm = ["0d8b5afb66e23d80433102e9bd8b5c8b65d34c2a2255b2de58d97bd2ea8170fd", "f35fb121bafa030bd94e74fcfd44f3c2830039a2ddef7fc87ef1c2d205237b24"]
