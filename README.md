@@ -148,14 +148,6 @@ Main Module:
       except(Exception):
          print(‘Country Code is Invalid’)
 
-# AttainU
-# Source Code by Praveen Nagaraj
-
-
-Conclusion:
-	This Project helps in understanding about IFTTT and it’s services along with Bitcoin price and it’s news.
-Since this project is developed using Python it will help in understanding about modules and using python in real world example.
-
 
 
 
